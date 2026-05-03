@@ -1,0 +1,53 @@
+[MASTER]
+# Игнорировать __pycache__, venv, миграции
+ignore=__pycache__,.venv,venv,alembic,tests
+
+[FORMAT]
+# Увеличить лимит длины строки до 120 (стандарт для современных проектов)
+max-line-length=120
+# Разрешить несколько выражений на строке в тестах
+single-line-if-stmt=yes
+
+[BASIC]
+# Разрешить lowercase для enum значений (PaintingType.oil)
+const-rgx=([A-Z_][A-Z0-9_]*)|([a-z_][a-z0-9_]*)$
+# Игнорировать R0903 для SQLAlchemy моделей (они не требуют методов)
+signature-mutators=
+
+[DESIGN]
+# Увеличить лимит аргументов для эндпоинтов FastAPI
+max-args=10
+max-positional-arguments=10
+# Отключить проверку на слишком мало методов для моделей БД
+min-public-methods=0
+
+[TYPECHECK]
+# Игнорировать ложные срабатывания для SQLAlchemy func.now()
+ignored-classes=sqlalchemy.sql.functions.func
+# Игнорировать динамические атрибуты моделей
+generated-members=id,created_at,artist,genre,paintings,user_favorites
+
+[MESSAGES CONTROL]
+# Отключить проверки, которые мешают в этом проекте
+disable=
+    # Документация (не требуется для учебного проекта)
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    # Стиль (субъективно)
+    too-few-public-methods,
+    # Ложные срабатывания SQLAlchemy
+    not-callable,
+    # Импорт (настроим вручную)
+    cyclic-import,
+    # Для схем данных валидация через Pydantic, а не docstring
+    no-else-return
+
+[IMPORTS]
+# Правильный порядок импортов: stdlib → third-party → first-party
+known-third-party=fastapi,sqlalchemy,pydantic,jose,passlib,pytest,httpx
+known-first-party=app
+
+[VARIABLES]
+# Игнорировать неиспользуемые аргументы в зависимостях FastAPI
+dummy-variables-rgx=^(_|unused_)

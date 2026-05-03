@@ -7,5 +7,6 @@ python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4
 python-multipart>=0.0.6
 pytest>=7.4.4
+pytest-cov>=7.1.0
 httpx>=0.26.0
 pytest-asyncio>=0.23.3
